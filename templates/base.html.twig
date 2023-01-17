@@ -14,6 +14,12 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="d-flex">
+            {% if is_granted('ROLE_USER') %}
+            {% include 'partials/_sidebar.html.twig' %}
+            {% endif %}
+
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>
