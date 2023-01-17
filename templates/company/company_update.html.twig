@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entreprises{% endblock %}
+
+{% block body %}
+<div class="container p-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-xl-6 max-width-550">
+            <div class="mb-4">
+                <div class="card card-outline-secondary">
+                    <div class="card-header text-center">
+                        <h3 class="mb-0">Informations</h3>
+                    </div>
+                    <div class="card-body">
+                        {{form_start(form)}}
+                            <div class="form-floating mt-2">
+                                {{form_widget(form.name, { 'attr' : {'class' : "form-control text-primary", 'placeholder' : 'Nom'}})}}
+                                <label class="ms-3" for="floatingNom">Nom</label>
+                                <span class="form-text small text-muted">{{form_errors(form.name)}}
+                                </span>
+                            </div>
+                            <div class="form-floating  mt-2">
+                                {{form_widget(form.street, { 'attr' : {'class' : "form-control text-primary", 'placeholder' : 'Adresse'}})}}
+                                <label class="ms-3" for="floatingPrenom">Adresse</label>
+                                <span class="form-text small text-muted">{{form_errors(form.street)}}
+                                </span>
+                            </div>
+                            <div class="form-floating mt-2">
+                                {{form_widget(form.zipCode, { 'attr' : {'class' : "form-control text-primary", 'placeholder' : 'Code postal'}})}}
+                                <label class="ms-3" for="street_number">Code postal</label>
+                                <span class="form-text small text-muted">{{form_errors(form.zipCode)}}
+                                </span>
+                            </div>
+                            <div class="form-floating mt-2">
+                                {{form_widget(form.city, { 'attr' : {'class' : "form-control text-primary", 'placeholder' : 'Ville'}})}}
+                                <label class="ms-3" for="floatingAdress">Ville</label>
+                                <span class="form-text small text-muted">{{form_errors(form.city)}}
+                                </span>
+                            </div>
+                            <div class="form-floating mt-2">
+                                {{form_widget(form.siret, { 'attr' : {'class' : "form-control text-primary", 'placeholder' : 'Siret'}})}}
+                                <label class="ms-3" for="floatingTel">SIRET</label>
+                                <span class="form-text small text-muted">{{form_errors(form.siret)}}
+                                </span>
+                            </div>
+                            <div class="text-center mt-3">
+                                <button class="btn btn-primary profile-button" type="submit" value="submit">Enregistrer</button>
+                            </div>
+                            {{form_end(form)}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

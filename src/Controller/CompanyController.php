@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Company;
+use App\Form\CompanyType;
 use App\Model\PaginatedDataModel;
 use App\Repository\CompanyRepository;
+use Doctrine\Persistence\ManagerRegistry;
+use Error;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,5 +36,40 @@ class CompanyController extends AbstractController
                 'CP' => 'zipCode'
             ]))->getData()
         ]);
+    }
+
+    #[Route('/entreprise/modif/{id}', name: 'app_update_company')]
+    public function update(
+        ManagerRegistry $doctrine, int $id,
+        Request $request): Response
+    {
+        $entityManager = $doctrine->getManager();
+
+        try {
+            $company = $entityManager->getRepository(Company::class)->find($id);
+
+            if (!$company) {
+                throw $this->createNotFoundException(
+                    'No company found for id '.$id
+                );
+            }
+
+            $form = $this->createForm(CompanyType::class, $company);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid())
+            {
+            $entityManager->flush();
+            }
+        } catch (Error) {
+            $this->addFlash('error', "Aucune entreprise associée à l'id . $id");
+            $this->redirectToRoute('app_company_index');
+        }
+
+        return $this->render('./company/company_update.html.twig', 
+            [
+                'form' => $form->createView(),
+            ]
+        );
     }
 }
