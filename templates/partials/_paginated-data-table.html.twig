@@ -1,0 +1,25 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>{{ knp_pagination_sortable(data.items, 'Id', 'c.id') }}</th>
+            {% for prop_header, prop_name in data.props %}
+            <th>{{ prop_header }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in data.items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            {% for prop_header, prop_name in data.props %}
+            <td>{{ attribute(item, prop_name) }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+
+
+</table>
+
+{{ knp_pagination_render(data.items) }}
