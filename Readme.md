@@ -6,7 +6,15 @@ Un projet très passionnat pour découvrir Symfony
 
 composer install
 
+yarn install
+
+yarn encore dev
+
 symfony console doctrine:database:create
+
+symfony console doctrine:migration:migrate
+
+symfony console doctrine:fixtures:load
 
 ### Important
 
