@@ -12,6 +12,7 @@ class PaginatedDataModel
     public PaginationInterface $items;
 
     public array $props;
+    public array $actions;
 
     /**
      * @param PaginationInterface $items
@@ -20,18 +21,22 @@ class PaginatedDataModel
      *  'Nom' => 'name',
      *  ...
      * ]
+     * @param array $actions
+     *
      */
-    public function __construct(PaginationInterface $items, array $props)
+    public function __construct(PaginationInterface $items, array $props, array $actions = [])
     {
         $this->items = $items;
         $this->props = $props;
+        $this->actions = $actions;
     }
 
     public function getData() : array
     {
         return [
             'items' => $this->items,
-            'props' => $this->props
+            'props' => $this->props,
+            'actions' => $this->actions,
         ];
     }
 
