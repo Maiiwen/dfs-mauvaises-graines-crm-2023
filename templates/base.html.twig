@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="FR">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -19,7 +19,26 @@
             {% include 'partials/_sidebar.html.twig' %}
             {% endif %}
 
+
+
             {% block body %}{% endblock %}
+            {% for message in app.flashes('error') %}
+                <div class="position-relative">
+                    <div class="alert alert-danger alert-dismissible mt-2 me-2 fade show position-fixed top-0 end-0" style="width:400px;" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('success') %}
+                <div class="position-relative">
+                    <div class="alert alert-success alert-dismissible mt-2 me-2 fade show position-fixed top-0 end-0" style="width:400px;" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            {% endfor %}
+
         </div>
     </body>
 </html>
