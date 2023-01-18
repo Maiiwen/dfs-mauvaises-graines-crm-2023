@@ -25,6 +25,21 @@
     box-shadow: 5px 5px 20px rgb(175, 175, 175);;
 }
 
+.detail {
+    padding-top: 10px;
+    padding-left: 60px;
+    svg {
+        margin-bottom: 8px;
+    }
+    span {
+        display: inline;
+        padding-left: 20px;
+        max-width: 50%;
+        background-color: #0088e3 !important;
+        user-select: none;
+    }
+}
+
 
 @keyframes hover {
     from {

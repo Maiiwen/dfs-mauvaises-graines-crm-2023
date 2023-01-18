@@ -10,7 +10,7 @@
 
     <tbody>
         {% for item in data.items %}
-        <tr data-url="{{ path('app_company_detail', {'id': item.id}) }}" class="{% if item.zipcode is defined %}line-hover{% endif %}" onclick=(customerDetail())>
+        <tr {% if item.zipcode is defined %}data-url="{{ path('app_company_detail', {'id': item.id}) }}" class="line-hover"{% endif %}>
             <td>{{ item.id }}</td>
             {% for prop_header, prop_name in data.props %}
             <td>{{ attribute(item, prop_name) }}</td>
