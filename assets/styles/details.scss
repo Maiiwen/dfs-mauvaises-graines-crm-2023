@@ -22,21 +22,72 @@
 .info-card {
     font-weight: bold;
     border-radius: 10px;
-    box-shadow: 5px 5px 20px rgb(175, 175, 175);;
+    box-shadow: 5px 5px 10px rgb(175, 175, 175);
 }
 
 .detail {
+    z-index: -1;
+    text-overflow: ellipsis;
     padding-top: 10px;
     padding-left: 60px;
+    animation: appear backwards normal cubic-bezier(0.19, 1, 0.22, 1) 2s;
     svg {
         margin-bottom: 8px;
     }
     span {
         display: inline;
         padding-left: 20px;
-        max-width: 50%;
+        width: 10px !important;
         background-color: #0088e3 !important;
         user-select: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.customer-card {
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgb(175, 175, 175);
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+.company-infos {
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.company {
+    align-items: center;
+}
+
+.shadow-btn {
+    box-shadow: 5px 5px 10px rgb(175, 175, 175);
+    animation: btnNotHover;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    animation-duration: 1s;
+}
+
+.shadow-btn:hover {
+    animation: btnHover;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    animation-duration: 1s;
+}
+
+@keyframes appear {
+    from {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
 
@@ -48,5 +99,24 @@
 
     to {
         background-color: #00e388;
+    }
+}
+
+@keyframes btnHover {
+    from {
+        box-shadow: 5px 5px 10px rgb(175, 175, 175);
+    }
+    to {
+        box-shadow: none;
+    }
+}
+
+
+@keyframes btnNotHover {
+    from {
+        box-shadow: none;
+    }
+    to {
+        box-shadow: 5px 5px 10px rgb(175, 175, 175);
     }
 }

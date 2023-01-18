@@ -13,12 +13,19 @@
             <div class="col"></div>
         </div>
         <br><br><br>
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col">
+        <div class="row company">
+            <div class="col-5 customer-card company-infos">
                 <span><strong>Voie : </strong>{{ company.street }}</span><br>
-                <span><strong>Code postal et Ville : </strong>{{ company.zipCode }} {{ company.city }}</span>
-                <p><strong>N° de Siret : </strong> {{ company.siret }}</p>
+                <span><strong>Code postal et Ville : </strong>{{ company.zipCode }} {{ company.city }}</span><br>
+                <span><strong>N° de Siret : </strong> {{ company.siret }}</span>
+            </div>
+            <div class="col"></div>
+            <div class="col-5">
+                {# <a class="btn btn btn-primary shadow-btn" type="button"> #}
+                <a class="btn btn btn-primary shadow-btn" type="button" href="{{ path('app_company_edit', {'id': customer.id}) }}">
+                    Modifier l'entreprise
+                </a>
+                <br><br>
             </div>
         </div>
     
@@ -29,16 +36,16 @@
         </div>
 
         <br>
-        <h4>Liste des clients appartenant à l'entreprise</h4>
+        <h4>Liste des clients appartenant à l'entreprise</h4><br>
         <div class="row">
             {% for key,customer in customers %}
-                <div class="col-5">
+                <div class="col-5 customer-card">
                     <br>
                     <span><strong>Prénom : </strong></span>{{ customer.firstname }}<br>
                     <span><strong>Nom : </strong></span>{{ customer.lastname }}<br>
                     <span><strong>Adresse mail : </strong></span>{{ customer.email }}<br>
                     <span><strong>Créé par : </strong></span>{{ customer.createdBy }}<br><br>
-                    <a class="btn btn btn-primary" type="button" href="{{ path('app_company_edit', {'id': customer.id}) }}">
+                    <a class="btn btn btn-primary shadow-btn" type="button">
                         Modifier
                     </a>
                     <br>
