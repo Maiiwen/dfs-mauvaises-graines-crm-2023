@@ -1,0 +1,37 @@
+.line-hover:hover {
+    background-color: #00e388;
+    animation: hover;
+    animation-fill-mode: none;
+    animation-direction: normal;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    animation-duration: 1s;
+    cursor: pointer;
+}
+
+.padding-top {
+    padding-top: 10vh;
+}
+
+.hr {
+    background-color: #00e388;
+    height: 2px;
+    border-radius: 10px;
+}
+
+
+.info-card {
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgb(175, 175, 175);;
+}
+
+
+@keyframes hover {
+    from {
+        background-color: #ffffff;
+    }
+
+    to {
+        background-color: #00e388;
+    }
+}

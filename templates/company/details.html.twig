@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Company details !{% endblock %}
+
+{% block body %}
+    <div class="container padding-top">
+
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-2 text-center info-card">
+            <h2>{{ company.name }}</h2>
+        </div>
+        <div class="col"></div>
+    </div>
+    <br><br><br>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col">
+                <span><strong>Voie : </strong>{{ company.street }}</span><br>
+                <span><strong>Code postal et Ville : </strong>{{ company.zipCode }} {{ company.city }}</span>
+                <p><strong>N° de Siret : </strong> {{ company.siret }}</p>
+            </div>
+        </div>
+            <div class="row">
+            <div class="col-5 hr"></div>
+            <div class="col"></div>
+            <div class="col-5 hr"></div>
+        </div>
+        <br>
+        <h4>Liste des clients appartenant à l'entreprise</h4>
+            <div class="row">
+                {% for customer in customers %}
+                    {% if customer.id % 2 != 0 %}
+                        <div class="col-5">
+                        <br>
+                            <span><strong>Prénom : </strong></span>{{ customer.firstname }}<br>
+                            <span><strong>Nom : </strong></span>{{ customer.lastname }}<br>
+                            <span><strong>Adresse mail : </strong></span>{{ customer.email }}<br>
+                            <span><strong>Créé par : </strong></span>{{ customer.createdBy }}<br><br>
+                            <a class="btn btn-lg btn-primary" type="button" href="{{ path('app_company_edit') }}">
+                                Modifier
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="col"></div>
+                {% for customer in customers %}
+                    {% if customer.id % 2 == 0 %}
+                        <div class="col-5">
+                        <br>
+                            <span><strong>Prénom : </strong></span>{{ customer.firstname }}<br>
+                            <span><strong>Nom : </strong></span>{{ customer.lastname }}<br>
+                            <span><strong>Adresse mail : </strong></span>{{ customer.email }}<br>
+                            <span><strong>Créé par : </strong></span>{{ customer.createdBy }}<br><br>
+                            <a class="btn btn-lg btn-primary" type="button" href="{{ path('app_company_edit') }}">
+                                Modifier
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+    </div>
+{% endblock %}

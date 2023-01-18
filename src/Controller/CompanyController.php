@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\PaginatedDataModel;
 use App\Repository\CompanyRepository;
+use App\Repository\CustomerRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CompanyController extends AbstractController
 {
     #[Route('/entreprises', name: 'app_company_index')]
+    #[Route('/entreprises/detail/{id}', name: 'app_company_detail')]
+
     public function index(
         CompanyRepository $companyRepository,
         PaginatorInterface $paginator,
@@ -33,4 +36,21 @@ class CompanyController extends AbstractController
             ]))->getData()
         ]);
     }
+
+    /**
+     * @Route("/entreprises/detail/{id}", name="app_company_detail")
+     */
+    public function detail(int $id, CompanyRepository $companyRepository, CustomerRepository $customerRepository)
+    {
+        $company = $companyRepository->find($id);
+        $customers = $customerRepository->findBy(['company' => $company]);
+        $totalCompanies = $companyRepository->count([]);
+        return $this->render('company/details.html.twig', [
+            'company' => $company,
+            'totalCompanies' => $totalCompanies,
+            'customers' => $customers
+        ]);
+    }
+
+
 }

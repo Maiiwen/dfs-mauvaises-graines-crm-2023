@@ -41,6 +41,9 @@ class AppFixtures extends Fixture
         {
             $company = (new Company())
             ->setName('Entreprise ' . $i)
+            ->setStreet($i . ' Rue de la joie')
+            ->setCity('Metz')
+            ->setZipCode('57000')
             ->setSiret($this->randomizeSiret());
 
             $manager->persist($company);

@@ -21,5 +21,9 @@
 
             {% block body %}{% endblock %}
         </div>
+
+        {% block javascript %}
+            <script src="{{ asset('scripts/view.js') }}" type="text/javascript"></script>
+        {% endblock %}
     </body>
 </html>
