@@ -1,3 +1,15 @@
 @import 'variables';
 @import '~bootstrap/scss/bootstrap.scss';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
+
+#liste{
+    z-index: 50000;
+    position: absolute !important;
+    background-color: #fff !important;
+    border: 1px solid #ced4da !important;
+}
+
+.style{
+    padding: 1rem 0.75rem;
+    cursor: pointer;
+}
