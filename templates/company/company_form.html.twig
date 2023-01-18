@@ -25,9 +25,11 @@
                                 <label class="ms-3" for="floatingPrenom">Adresse</label>
                                 <span class="form-text small text-danger text-muted">{{ form_errors(form.street) }}
                                 </span>
+                                <ul id="liste" class="text-primary list-unstyled">
+                                </ul>
                             </div>
                             <div class="form-floating mt-2">
-                                {{ form_widget(form.zipCode, { 'attr' : {'class' : "form-control text-primary", 'placeholder' : 'Code postal'}}) }}
+                                {{ form_widget(form.zipCode, { 'attr' : {'class' : "form-control text-primary", 'placeholder' : 'Code postal' }}) }}
                                 <label class="ms-3" for="street_number">Code postal</label>
                                 <span class="form-text small text-danger text-muted">{{ form_errors(form.zipCode) }}
                                 </span>
