@@ -28,36 +28,22 @@
         </div>
         <br>
         <h4>Liste des clients appartenant à l'entreprise</h4>
-            <div class="row">
-                {% for customer in customers %}
-                    {% if customer.id % 2 != 0 %}
-                        <div class="col-5">
-                        <br>
-                            <span><strong>Prénom : </strong></span>{{ customer.firstname }}<br>
-                            <span><strong>Nom : </strong></span>{{ customer.lastname }}<br>
-                            <span><strong>Adresse mail : </strong></span>{{ customer.email }}<br>
-                            <span><strong>Créé par : </strong></span>{{ customer.createdBy }}<br><br>
-                            <a class="btn btn-lg btn-primary" type="button" href="{{ path('app_company_edit') }}">
-                                Modifier
-                            </a>
-                        </div>
+        <div class="row">
+            {% for key,customer in customers %}
+                <div class="col-5">
+                            <br>
+                                <span><strong>Prénom : </strong></span>{{ customer.firstname }}<br>
+                                <span><strong>Nom : </strong></span>{{ customer.lastname }}<br>
+                                <span><strong>Adresse mail : </strong></span>{{ customer.email }}<br>
+                                <span><strong>Créé par : </strong></span>{{ customer.createdBy }}<br><br>
+                                <a class="btn btn-lg btn-primary" type="button" href="{{ path('app_company_edit', {'id': customer.id}) }}">
+                                    Modifier
+                                </a>
+                            <br>
+                </div>
+                    {% if key % 2 == 0 %}
+                        <div class="col-2"></div>
                     {% endif %}
                 {% endfor %}
-                <div class="col"></div>
-                {% for customer in customers %}
-                    {% if customer.id % 2 == 0 %}
-                        <div class="col-5">
-                        <br>
-                            <span><strong>Prénom : </strong></span>{{ customer.firstname }}<br>
-                            <span><strong>Nom : </strong></span>{{ customer.lastname }}<br>
-                            <span><strong>Adresse mail : </strong></span>{{ customer.email }}<br>
-                            <span><strong>Créé par : </strong></span>{{ customer.createdBy }}<br><br>
-                            <a class="btn btn-lg btn-primary" type="button" href="{{ path('app_company_edit') }}">
-                                Modifier
-                            </a>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
     </div>
 {% endblock %}
