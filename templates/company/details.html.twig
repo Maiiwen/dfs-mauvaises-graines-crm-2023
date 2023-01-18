@@ -38,8 +38,7 @@
                     <span><strong>Nom : </strong></span>{{ customer.lastname }}<br>
                     <span><strong>Adresse mail : </strong></span>{{ customer.email }}<br>
                     <span><strong>Créé par : </strong></span>{{ customer.createdBy }}<br><br>
-                    {# <a class="btn btn btn-primary" type="button" href="{{ path('app_company_edit', {'id': customer.id}) }}"> #}
-                    <a class="btn btn btn-primary" type="button">
+                    <a class="btn btn btn-primary" type="button" href="{{ path('app_company_edit', {'id': customer.id}) }}">
                         Modifier
                     </a>
                     <br>
